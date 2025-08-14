@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +14,6 @@ use App\Http\Controllers\Api\LeadController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/leads', [LeadController::class, 'store']);
-Route::get('/leads', [LeadController::class, 'index']);
-Route::patch('/leads/{lead}/contacted', [LeadController::class, 'markAsContacted']);
